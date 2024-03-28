@@ -6,14 +6,15 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.List;
 
-
+@Table(name = "roles")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+//@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role implements Serializable  {
 
 
@@ -22,6 +23,9 @@ public class Role implements Serializable  {
     Integer id ;
     @Enumerated(EnumType.STRING)
     RoleName roleName ;
+
+    @ManyToMany(mappedBy = "roles",fetch = FetchType.EAGER  , cascade = CascadeType.PERSIST)
+    private List<User> users;
 
     public Role (RoleName roleName) {this.roleName = roleName;}
     public String getRoleName() {

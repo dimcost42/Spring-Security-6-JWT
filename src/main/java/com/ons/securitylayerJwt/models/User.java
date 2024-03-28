@@ -10,14 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.*;
 
-
+@Table(name = "users")
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+//@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements Serializable , UserDetails {
 
 

@@ -11,6 +11,7 @@ import com.ons.securitylayerJwt.persistence.IUserRepository;
 import com.ons.securitylayerJwt.security.JwtUtilities;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,7 +33,11 @@ import java.util.List;
 public class UserService implements IUserService{
 
     private final AuthenticationManager authenticationManager ;
+
+    @Autowired
     private final IUserRepository iUserRepository ;
+
+    @Autowired
     private final IRoleRepository iRoleRepository ;
     private final PasswordEncoder passwordEncoder ;
     private final JwtUtilities jwtUtilities ;
